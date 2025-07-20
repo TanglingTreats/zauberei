@@ -1,6 +1,11 @@
 // What should the syntax be? Comments will at least be double slashes.
-/* This is a block comment */
+/* This is a block
+comment */
 /* a compiled or interpreted language? hmm */
+// More comments lmao
+/* a compiled or interpreted language? hmm */
+
+
 
 fn main() int {
    int c = 5
