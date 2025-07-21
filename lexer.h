@@ -41,6 +41,7 @@ typedef enum {
   TOKEN_WHILE,
   TOKEN_AND,
   TOKEN_OR,
+  TOKEN_BINDING,
   // Misc
   TOKEN_ERROR,
   TOKEN_EOF

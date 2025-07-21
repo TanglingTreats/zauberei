@@ -21,6 +21,7 @@ const char *const ttype_string[] = {
     "TOKEN_INT", "TOKEN_CHAR", "TOKEN_BYTE", "TOKEN_IF", "TOKEN_ELSE",
     "TOKEN_ELIF", "TOKEN_FUNC", "TOKEN_TRUE", "TOKEN_FALSE", "TOKEN_WHILE",
     "TOKEN_AND", "TOKEN_OR",
+    "TOKEN_BINDING",
     // Misc
     "TOKEN_ERROR", "TOKEN_EOF"
 };

@@ -5,6 +5,8 @@ comment */
 // More comments lmao
 /* a compiled or interpreted language? hmm */
 
+int a = 6
+/*int a=6
 
 
 fn main() int {

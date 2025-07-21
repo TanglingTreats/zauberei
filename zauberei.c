@@ -5,7 +5,7 @@
 char *getSource(const char *filename) {
   FILE *file = fopen(filename, "r");
   if (file == NULL) {
-    printf("ERROR: Unable to open file");
+    printf("ERROR: Unable to open file.\n");
     return NULL;
   }
 
@@ -25,14 +25,23 @@ char *getSource(const char *filename) {
   return buffer;
 }
 
-int main() {
+int main(int argc, const char** argv) {
   // Open and read file contents
-  char *buffer = getSource("main.zaub");
-  printf("----- SRC -----\n");
-  printf("\n%s\n", buffer);
-  printf("----- END SRC -----\n\n");
 
-  compile(buffer);
+  if (argc == 1) {
+    printf("Start repl\n");
+  } else {
+    char *buffer = getSource(argv[1]);
+    if(buffer == NULL) {
+      printf("ERROR: No such file.\n");
+      return 1;
+    }
+    printf("----- SRC -----\n");
+    printf("\n%s\n", buffer);
+    printf("----- END SRC -----\n\n");
+
+    compile(buffer);
+  }
 
   return 0;
 }
