@@ -38,7 +38,7 @@ static void newLine() {
   lexer.column = 1;
 }
 
-static void skipBlockCmmt() {
+static void advanceTwo() {
   advance();
   advance();
 }
@@ -99,25 +99,30 @@ static void skipWhitespace() {
     case '/':
       if (peekNext() == '/') {
         // Continue until end-of-line
-        while(peek() != '\n' && !isTheEnd()) {
+        while(!(peek() == '\n' || isTheEnd())) {
           advance();
         }
 
-        newLine();
-
+        if(peek() == '\n') {
+          newLine();
+        }
         if (peekNext() == '/') {
           advance();
         }
 
       } else if (peekNext() == '*') {
-        skipBlockCmmt();
+        advanceTwo();
         while((peek() != '*' && peekNext() != '/') && !isTheEnd()) {
           advance();
           if(peek() == '\n') {
             newLine();
           }
         }
-        skipBlockCmmt();
+
+        // only skip if ending block comment found
+        if(peek() == '*' && peekNext() == '/') {
+          advanceTwo();
+        }
 
 
         // When there are subsequent comments
@@ -205,6 +210,7 @@ void initLexer(const char *source) {
   lexer.column = 1;
   lexer.start = source;
   lexer.current = source;
+  lexer.buflen = strlen(source);
 }
 
 Token scanToken() {

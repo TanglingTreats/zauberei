@@ -61,6 +61,7 @@ typedef struct {
 typedef struct {
   const char *start;
   const char *current;
+  int buflen;
   int line;
   int column;
 } Lexer;
